@@ -5,160 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yagnik N. Patel - Portfolio</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* --- keep all your original CSS here --- */
+    /* I’ll just show added/modified parts */
 
-    :root {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f5f5f7;
-      --bg-tertiary: #fbfbfd;
-      --text-primary: #1d1d1f;
-      --text-secondary: #86868b;
-      --accent-blue: #007aff;
-      --accent-blue-hover: #0051d5;
-      --border: rgba(0, 0, 0, 0.08);
-      --glass: rgba(255, 255, 255, 0.8);
-      --glass-light: rgba(255, 255, 255, 0.1);
-      --shadow: rgba(0, 0, 0, 0.04);
-      --shadow-hover: rgba(0, 0, 0, 0.12);
-      --radius: 24px;
-      --radius-small: 12px;
-      --nav-height: 44px;
-    }
-    [data-theme="dark"] {
-      --bg-primary: #000;
-      --bg-secondary: #161617;
-      --bg-tertiary: #1c1c1e;
-      --text-primary: #f5f5f7;
-      --text-secondary: #86868b;
-      --accent-blue: #007aff;
-      --accent-blue-hover: #409cff;
-      --border: rgba(255, 255, 255, 0.08);
-      --glass: rgba(28, 28, 30, 0.8);
-      --glass-light: rgba(255, 255, 255, 0.1);
-      --shadow: rgba(0, 0, 0, 0.3);
-      --shadow-hover: rgba(0, 0, 0, 0.5);
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
-      line-height: 1.5;
-      color: var(--text-primary);
-      background: var(--bg-primary);
-      overflow-x: hidden;
-      transition: all 0.4s ease;
-    }
-
-    /* NAVIGATION */
-    .nav-wrapper {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-    }
-    nav {
-      padding: 0 22px; height: var(--nav-height);
-      background: var(--glass); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    .nav-container {
-      max-width: 1024px; width: 100%;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .logo { font-size: 20px; font-weight: 600; text-decoration: none; color: var(--text-primary); }
-    .nav-links {
-      display: flex; list-style: none; gap: 24px; align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none; color: var(--text-primary); font-size: 14px; padding: 8px 16px;
-      border-radius: 20px; transition: all 0.3s ease;
-    }
-    .nav-links a:hover {
-      background: var(--glass-light); backdrop-filter: blur(10px);
-    }
-
-    /* Hamburger */
+    /* Mobile Navbar */
     .menu-toggle {
-      display: none; background: none; border: none; font-size: 24px; cursor: pointer;
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
       color: var(--text-primary);
+      cursor: pointer;
     }
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-links {
-        display: none; flex-direction: column; background: var(--glass);
-        position: absolute; top: var(--nav-height); right: 0; width: 200px; padding: 20px;
+        display: none;
+        flex-direction: column;
+        background: var(--glass);
+        position: absolute;
+        top: var(--nav-height);
+        right: 0;
+        width: 220px;
+        padding: 20px;
         border-radius: var(--radius);
       }
       .nav-links.active { display: flex; }
     }
 
-    /* HERO SECTION */
-    .hero {
-      height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 0 22px; background: var(--bg-primary);
+    /* Hero symmetry */
+    .hero-content.hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
     }
-    .hero-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
-      max-width: 1024px; width: 100%;
+    .hero-left { text-align: left; }
+    .hero-right {
+      display: flex;
+      justify-content: center;
     }
-    .hero-left h1 {
-      font-size: clamp(48px, 8vw, 96px); font-weight: 600; margin-bottom: 24px;
-    }
-    .subtitle { font-size: 20px; color: var(--text-secondary); margin-bottom: 32px; }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-primary, .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; border-radius: 980px; font-size: 16px;
-      text-decoration: none; transition: all 0.3s ease;
-    }
-    .btn-primary { background: var(--accent-blue); color: white; }
-    .btn-primary:hover { background: var(--accent-blue-hover); }
-    .btn-secondary { border: 1px solid var(--border); color: var(--accent-blue); }
-    .btn-secondary:hover { background: var(--bg-secondary); }
-
-    .social-links { margin-top: 20px; display: flex; gap: 20px; font-size: 22px; }
-    .social-links a { text-decoration: none; }
-
-    /* Hero right glass */
-    .hero-right { display: flex; justify-content: center; }
     .glass-box {
-      background: var(--glass); backdrop-filter: blur(20px);
-      border-radius: var(--radius); padding: 30px; max-width: 400px;
-      text-align: center; position: relative;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius);
+      padding: 30px;
+      max-width: 400px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      position: relative;
     }
     .glass-box::after {
-      content: ""; position: absolute; bottom: -50%; left: 0; right: 0; height: 100%;
-      background: inherit; border-radius: inherit;
-      transform: scaleY(-1); opacity: 0.15;
+      content: "";
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: inherit;
+      border-radius: inherit;
+      transform: scaleY(-1);
+      opacity: 0.15;
       mask-image: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
       -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
     }
 
-    @media (max-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-right { display: none; }
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      font-size: 22px;
     }
+    .social-links a { text-decoration: none; }
 
-    /* Footer */
-    footer {
-      padding: 40px 22px; text-align: center;
-      color: var(--text-secondary); border-top: 1px solid var(--border);
+    @media (max-width: 768px) {
+      .hero-content.hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-right { display: none; }
     }
   </style>
 </head>
 <body>
-  <!-- NAV -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- NAVIGATION -->
   <div class="nav-wrapper">
     <nav>
+      <div class="nav-glass-bg" id="navGlassBg"></div>
       <div class="nav-container">
-        <a href="#home" class="logo">Yagnik N. Patel</a>
-        <button class="menu-toggle" id="menuToggle">☰</button>
+        <a href="#home" class="logo hover-target">Yagnik N. Patel</a>
+        <button class="menu-toggle hover-target" id="menuToggle">☰</button>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#photos">Gallery</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="Yagnik_Patel_Resume.pdf" target="_blank">Resume</a></li>
+          <li><a href="#about" class="hover-target nav-item">About</a></li>
+          <li><a href="#skills" class="hover-target nav-item">Skills</a></li>
+          <li><a href="#photos" class="hover-target nav-item">Gallery</a></li>
+          <li><a href="#projects" class="hover-target nav-item">Projects</a></li>
+          <li><a href="#contact" class="hover-target nav-item">Contact</a></li>
+          <li><a href="Yagnik_Patel_Resume.pdf" class="hover-target nav-item" target="_blank">Resume</a></li>
+          <li><button class="theme-toggle hover-target" id="themeToggle">🌙</button></li>
         </ul>
       </div>
     </nav>
@@ -166,13 +110,13 @@
 
   <!-- HERO -->
   <section id="home" class="hero">
-    <div class="hero-grid">
+    <div class="hero-content hero-grid">
       <div class="hero-left">
         <h1>Think different.</h1>
         <p class="subtitle">Explorer • ICT Engineer • GD • Photographer</p>
         <div class="hero-actions">
-          <a href="Yagnik_Patel_Resume.pdf" class="btn-primary">Download Resume</a>
-          <a href="#contact" class="btn-secondary">Get in touch</a>
+          <a href="Yagnik_Patel_Resume.pdf" class="btn-primary hover-target">Download Resume</a>
+          <a href="#contact" class="btn-secondary hover-target">Get in touch</a>
         </div>
         <div class="social-links">
           <a href="https://x.com/" target="_blank">🐦</a>
@@ -188,12 +132,16 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- KEEP all your About, Skills, Photos, Projects, Contact, Footer exactly as in your original file -->
+  <!-- ... (paste your unchanged sections here from the original Glass.html) ... -->
+
   <footer>
     <p>© 2025 Yagnik N. Patel. All rights reserved.</p>
   </footer>
 
   <script>
+    // keep all your original JS here...
+    // add mobile menu toggle:
     document.getElementById("menuToggle").addEventListener("click", () => {
       document.getElementById("navLinks").classList.toggle("active");
     });
